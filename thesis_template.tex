@@ -1,0 +1,69 @@
+\documentclass[a4paper, 14pt]{article}
+
+\usepackage{thesis_style}
+%\includeonly{chapter1}
+%\setcounter{tocdepth}{2}
+
+\begin{document}
+	% Вставьте свой титульный лист
+	%\includepdf[pages=-]{chapters/titlepage_thesis.pdf}
+	
+	\section*{Аннотация}
+	\addcontentsline{toc}{section}{Аннотация}
+	Расчётно-пояснительная записка «Название ВКР» содержит \begin{NoHyper}\pageref{LastPage}\end{NoHyper} страницы текста, рисунков — \totalfigures, таблиц — \totaltables, использованных источников — .
+	{\sloppy
+		
+	}
+	Ключевые слова: .
+	
+	Область применения — .
+	
+	Объект исследования — .
+	
+	Цель работы — .
+	
+	Программная часть реализована на языке .
+	
+	\newpage
+	
+	\renewcommand\contentsname{Содержание}
+	\tableofcontents
+	\newpage
+	
+	\section*{Обозначения и сокращения}
+	\addcontentsline{toc}{section}{Обозначения и сокращения}
+	\begin{itemize}
+		\item ;
+	\end{itemize}
+	\newpage
+	
+	\section*{Введение}
+	\addcontentsline{toc}{section}{Введение} 
+	%\input{chapters/intro_thesis}
+	\newpage
+	
+	\section{Глава 1}
+	%\input{chapters/chapter1}
+	\newpage
+	
+	\section{Глава 2}
+	%\input{chapters/chapter2}
+	\newpage
+	
+	\section*{Заключение}
+	\addcontentsline{toc}{section}{Заключение}
+		Текст заключения.
+	\newpage
+	
+	\renewcommand{\refname}{Список использованных источников}
+	\begin{thebibliography}{99}
+		\addcontentsline{toc}{section}{\refname}
+		\bibitem{1} Первый источник.
+	\end{thebibliography}
+	\newpage
+	
+	\section*{Приложение A}
+	\addcontentsline{toc}{section}{Приложение A}
+	%\input{chapters/attach}
+	
+\end{document}

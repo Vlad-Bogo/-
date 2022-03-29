@@ -1,0 +1,142 @@
+% Стилевой файл для ВКР по ГОСТу
+% Разработан Богословским Владиславом (V.D.Bogoslovsky@yandex.ru) в 2021 году.
+\ProvidesPackage{thesis_style}
+
+%%% Работа с русским языком
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage{mathtext} 				% русские буквы в формулах (ну а вдруг)
+\usepackage{textcomp}				% дополнительные типографские знаки
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Шрифты
+\usepackage{euscript} % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+
+%%% Страница
+\usepackage{extsizes} 	 % Возможность сделать 14-й шрифт
+\usepackage{geometry}	 % Простой способ задавать поля
+\geometry{top=20mm}
+\geometry{bottom=20mm}
+\geometry{left=30mm}
+\geometry{right=10mm}
+\usepackage{indentfirst} % Красная строка
+%
+\usepackage{setspace} % Интерлиньяж
+\onehalfspacing % Интерлиньяж 1.5
+
+%%% Цвета
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+\definecolor{comment}{rgb}{0,0.5,0}		% цвет комментариев
+\definecolor{plain}{rgb}{0.2,0.2,0.2}	% цвет нумерации листинга
+\definecolor{string}{HTML}{a930f0} 		% цвет строк листинга
+\definecolor{back}{HTML}{f7f7f7}		% цвет фона листинга
+
+%%% Работа с картинками
+\usepackage{graphicx}				% Для вставки рисунков
+\graphicspath{{images/}{code/}} 	% папки с картинками
+\setlength\fboxsep{3pt} 			% Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} 			% Толщина линий рамки \fbox{}
+\usepackage{wrapfig} 				% Обтекание рисунков и таблиц текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  					  % Длинные таблицы
+\usepackage{multirow} 						  % Слияние строк в таблице
+
+%%% Гиперссылки
+\usepackage{hyperref}
+\hypersetup{				% Гиперссылки
+	unicode=true,           		% русские буквы в раздела PDF
+	pdftitle={Заголовок},   		% Заголовок
+	pdfauthor={Автор},      		% Автор
+	pdfsubject={Тема},      		% Тема
+	pdfcreator={Создатель}, 		% Создатель
+	pdfproducer={Производитель},	% Производитель
+	pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
+	colorlinks=true,       			% false: ссылки в рамках; true: цветные ссылки
+	linkcolor=black,     			% внутренние ссылки
+	citecolor=black,        		% на библиографию
+	filecolor=black,      			% на файлы
+	urlcolor=black           		% на URL
+}
+
+%%% Листинг
+%\usepackage[numbered,framed]{mcode}
+\usepackage{listings}
+\lstset{
+	backgroundcolor=\color{back}, 				% цвет фона
+	basicstyle=\small\ttfamily,					% размер и начертание шрифта
+	breaklines=true, 							% автоматический разрыв строки
+	breakatwhitespace=true, 					% разрыв строки только на пробелах
+	commentstyle=\color{comment},				% стиль комментариев
+	language=Matlab, 							% язык программирования
+	numbers=left, 								% нумерация кода
+	%	firstnumber=1000 							% номер начала нумерации
+	numberstyle=\small\color{plain},			% стиль нумерации строк
+	numbersep=5pt,								% отступ номерации от кода
+	tabsize=2, 									% размер табуляции
+	extendedchars=true,
+	%	keywordstyle=\color{blue},					% стиль ключевых слов
+	%	frame=single, 								% рамка вокруг кода
+	stringstyle=\ttfamily\color{string}\ttfamily,
+	showspaces=false,							% показать пробелы
+	%	showtabs=false,
+	xleftmargin=17pt,
+	framexleftmargin=17pt,
+	%	framexrightmargin=3pt,
+	framexbottommargin=4pt,
+	showstringspaces=false,
+	%	inputencoding=utf8x,
+	%	keepspaces=true								% сохранение пробелов
+}
+
+%%% Работа с заголовками
+\usepackage[labelsep=period]{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43,0.35,0.35,0.01}{\parbox{0.9855\textwidth}{\hspace{15pt}#1#2#3}}}
+\captionsetup[lstlisting]{
+	format=listing,
+	labelfont=white,
+	textfont=white
+}
+\usepackage{subcaption}
+\renewcommand{\thesubfigure}{\asbuk{subfigure}} % нумерация подзаголовков русскими буквами
+
+%%% Библиография
+\usepackage{cite} % Работа с библиографией
+\usepackage{csquotes} % Еще инструменты для ссылок
+\usepackage[square,numbers,sort&compress]{natbib}
+\renewcommand{\bibnumfmt}[1]{#1.\hfill} % нумерация источников в самом списке — через точку
+
+%%% Дополнительные пакеты
+\usepackage{cmap}						% поиск в PDF
+\usepackage{pdfpages} 					% вставка pdf документов
+\usepackage{ulem} 						% разнообразное подчеркивание
+\usepackage[figure,table]{totalcount} 	% подсчет изображений, таблиц
+\usepackage{lastpage} 					% общее число страниц в документе.
+\usepackage{multicol} 					% несколько колонок
+
+%% Теоремы
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}
+\newtheorem{corollary}{Следствие}
+
+\theoremstyle{definition}
+\newtheorem{defin}{Определение}
+\newtheorem{example}{Пример}
+
+\theoremstyle{remark}
+\newtheorem*{note}{Замечание}
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+\newcommand{\frc}[2]{\raisebox{2pt}{$#1$}\big/\raisebox{-3pt}{$#2$}} % a/b
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
